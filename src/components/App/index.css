@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&family=Poppins:wght@200;300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+body{
+    margin: 0px;
+}
+
+.main-container{
+    height: 100%;
+    max-height: 100vh;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: linear-gradient(to right, rgb(55, 1, 96), rgb(135, 2, 236));
+    padding: 0px 20px 0px 20px;
+    height: 5%;
+    align-items: center;
+}
+
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.heading{
+    font-family: Dangrek;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 2px;
+}

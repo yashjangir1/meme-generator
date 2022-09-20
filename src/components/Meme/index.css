@@ -1,0 +1,60 @@
+
+.meme-container{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.meme-button{
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Poppins;
+    font-size: 18px;
+    background: rgb(135, 2, 236);
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+}
+
+.meme{
+    width: 50%;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.input-field{
+    width: 40%;
+    height: 50px;
+    margin: 15px;
+    border: 1px solid black;
+    font-family: Roboto;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
+
+.left-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+}
