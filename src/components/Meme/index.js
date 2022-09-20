@@ -40,7 +40,7 @@ const Meme = () => {
         }))
     }
 
-    console.log(generated)
+    console.log(process.env.REACT_APP_IMGFLIP_USERNAME)
     
     const generateMeme = () => {
         const param = new FormData()
@@ -57,6 +57,7 @@ const Meme = () => {
                     body: param
                 })  
                 const data = await response.json()
+                console.log(data)
                 
                 if(data.success){
                     setGenerated(true)
