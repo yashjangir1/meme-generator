@@ -12,7 +12,7 @@ const Meme = () => {
 
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
-        while (currentIndex != 0) {
+        while (currentIndex !== 0) {
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex--;
 
@@ -39,8 +39,6 @@ const Meme = () => {
             return item
         }))
     }
-
-    console.log(process.env.REACT_APP_IMGFLIP_USERNAME)
     
     const generateMeme = () => {
         const param = new FormData()
@@ -70,9 +68,6 @@ const Meme = () => {
         }
         postingMeme()
     }
-        
-    let imgUrl = memes.length !== 0 ? memes[memeIndex].url : ""
-    let box_count = memes.length !== 0 ? memes[memeIndex].box_count : 0
     
     React.useEffect(() => {
         fetch('https://api.imgflip.com/get_memes')
@@ -86,14 +81,26 @@ const Meme = () => {
     React.useEffect(() => {
         const arr = []
         let i = 0;
-        while(i < box_count){
+        while(i < (memes.length !== 0 ? memes[memeIndex].box_count : 0)){
             arr.push('')
             i++
         }
         setInputFieldArr(arr);
-    }, [memeIndex])
+    }, [memeIndex, memes])
 
-    console.log(inputFieldArr)
+    const newMeme = () => {
+        setGenerated(false)
+        skipMeme()
+    }
+
+    const simonGoBack = () => {
+        if(memeIndex === 0){
+            setMemeIndex(99)
+        }
+        else{
+            setMemeIndex(prevIndex => prevIndex - 1)
+        }
+    }
 
     return (
         !generated ? 
@@ -103,14 +110,15 @@ const Meme = () => {
                         {inputFieldArr.map((arr, index) => <input value = {inputFieldArr[index]} id = {index} onChange = {captionsUpdate} placeholder = {`Text ${index + 1}`} key = {index} type="text" className='input-field' />)}
                     </div>
                     <div className='buttons-container'>
+                        <button className='meme-button' onClick = {simonGoBack}>Back</button>
                         <button className='meme-button' onClick = {skipMeme}>Skip</button>
-                        <button className='meme-button' onClick = {generateMeme}>Generate</button>
                     </div>
+                    <button className='meme-button' onClick = {generateMeme}>Generate Meme</button>
                 </div>
-                <img alt="meme" src= {imgUrl} className='meme' />
+                <img alt="meme" src= {memes.length !== 0 ? memes[memeIndex].url : ""} className='meme' />
             </div>)
         :
-            (<MemeGenerated memeImage = {generatedUrl} />)
+            (<MemeGenerated memeImage = {generatedUrl} newMeme = {newMeme} />)
     )
 }
 

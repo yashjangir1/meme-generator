@@ -1,0 +1,85 @@
+
+.meme-generated-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.generated-buttons-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.generated-image{
+    width: 50%;
+}
+
+.copy-button{
+    height: 50px;
+    padding: 15px 25px 15px 25px;
+    font-family: Poppins;
+    font-size: 18px;
+    color: #ffffff;
+    border:none;
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.share{
+    font-family: Roboto;
+    font-size: 18px;
+    color: blueviolet;
+    margin-top: 40px;
+}
+
+.social-media-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-media-link{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    text-decoration: none;
+    color: rgb(99, 17, 174)
+}
+
+.copy-url-button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
+}
+
+.link-copy{
+    margin: 0px;
+    font-family: Poppins;
+    color:rgb(4, 180, 106);
+    font-size: 14px;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
