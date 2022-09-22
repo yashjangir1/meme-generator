@@ -8,7 +8,8 @@ const Meme = () => {
     const [inputFieldArr, setInputFieldArr] = React.useState([])
     const [generated, setGenerated] = React.useState(false)
     const [generatedUrl, setGeneratedUrl] = React.useState('')
-
+    const [searchText, setSearchText] = React.useState('')
+    const [memeFound, setMemeFound] = React.useState(false)
 
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
@@ -102,10 +103,34 @@ const Meme = () => {
         }
     }
 
+    const searchInput = (e) => {
+        setSearchText(e.target.value);
+    }
+
+    const searchMeme = () => {
+        let notFound = true;
+        memes.forEach((x, index) => {
+            if(x.name.includes(searchText)){
+                setMemeIndex(index)
+                notFound = false;
+            }
+        })
+        if(notFound){
+            setMemeFound(true)
+            setTimeout(() => setMemeFound(false), 1000)
+        }
+    }
+
     return (
         !generated ? 
             (<div className='meme-container'>
                 <div className='left-container'>
+                    <div className='search-container'>
+                        <input type="search" className='search-bar' onChange = {searchInput} placeholder='Search for a meme' />
+                        <button className="search-button" onClick = {searchMeme}>Search</button>
+                    </div>
+                    {memeFound && <p className='not-found'>No meme found</p>}
+                    <h1 className='meme-details'>Fill the below text boxes to create a meme: </h1>
                     <div className="input-container"> 
                         {inputFieldArr.map((arr, index) => <input value = {inputFieldArr[index]} id = {index} onChange = {captionsUpdate} placeholder = {`Text ${index + 1}`} key = {index} type="text" className='input-field' />)}
                     </div>

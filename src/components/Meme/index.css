@@ -69,6 +69,56 @@ a:hover{
    box-shadow: 2px 2px 4px 1px rgb(187, 133, 238);
 }
 
+.search-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.search-bar{
+    height: 40px;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+    font-family: Roboto;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.search-button{
+    border: none;
+    font-family: Poppins;
+    color: #ffffff;
+    background-color: blueviolet;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.meme-details{
+    font-size: 20px;
+    color:rgb(58, 1, 101);
+    font-family: Poppins;
+    font-weight: 400;
+    text-align: center;
+    width: 75%;
+}
+
+.not-found{
+    font-family: Roboto;
+    font-size: 16px;
+    color:rgb(58, 1, 101);
+    margin: 0px;
+    text-align: center;
+}
+
 
 @media all and (max-width: 576px){
     .meme-container{
