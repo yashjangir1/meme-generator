@@ -110,7 +110,7 @@ const Meme = () => {
     const searchMeme = () => {
         let notFound = true;
         memes.forEach((x, index) => {
-            if(x.name.includes(searchText)){
+            if(x.name.toLowerCase().includes(searchText.toLowerCase())){
                 setMemeIndex(index)
                 notFound = false;
             }
