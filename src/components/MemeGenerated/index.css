@@ -83,3 +83,23 @@ button{
     100% { opacity: 1; }
 }
 
+@media all and (max-width: 768px){
+    .meme-generated-container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .generated-image{
+        width: 90%;
+    }
+
+    .social-media-container{
+        flex-wrap: wrap;
+    }
+
+    .copy-button{
+        height: 60px;
+        font-size: 14px;
+    }
+}
+
