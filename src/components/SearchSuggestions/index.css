@@ -11,15 +11,17 @@
     border-radius: 5px;
 }
 
-.search-bar-and-suggestions{
-    border: 1px solid blue;
-    width: 70%;
-    position: relative;
-}
-
 .suggestion{
     font-family: Roboto;
     font-size: 16px;
-    border-bottom: 0.2px solid gray; 
     margin-bottom: 2px;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.2px solid gray; 
+    text-align: start;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
 }

@@ -2,12 +2,23 @@ import React from 'react'
 import './index.css'
 
 const SearchSuggestions = (props) => {
+    const {memesArr, inputText, suggestionSelect} = props
+    const [suggestions, setSuggestions] = React.useState([]);
+
+    React.useEffect(() => {
+        const arr = [];
+        for(let i = 0; i < memesArr.length; i++){
+            if(memesArr[i].name.toLowerCase().includes(inputText.toLowerCase())){
+                arr.push(memesArr[i])
+            }
+        }
+        setSuggestions(arr.filter((item, index) => index < 10))
+    }, [inputText, memesArr])
+
     return (
         <div className='search-suggestions-container'>
-            <p className='suggestion'>sdsds</p>
-            <p className='suggestion'>sdsds</p>
-            <p className='suggestion'>sdsd</p>
-            <p className='suggestion'>ssds</p>
+            {suggestions.length === 0 && <p className='suggestion'>No Results Found</p>}
+            {suggestions.length !== 0 && suggestions.map((item, index) => <button onClick = {suggestionSelect}  key = {index} className='suggestion'>{item.name}</button>)}
         </div>
     )
 }
