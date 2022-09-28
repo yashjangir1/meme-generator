@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 
 const SearchSuggestions = (props) => {
-    const {memesArr, inputText, suggestionSelect} = props
+    const {memesArr, inputText} = props
     const [suggestions, setSuggestions] = React.useState([]);
 
     React.useEffect(() => {
@@ -18,7 +18,7 @@ const SearchSuggestions = (props) => {
     return (
         <div className='search-suggestions-container'>
             {suggestions.length === 0 && <p className='suggestion'>No Results Found</p>}
-            {suggestions.length !== 0 && suggestions.map((item, index) => <button onClick = {suggestionSelect}  key = {index} className='suggestion'>{item.name}</button>)}
+            {suggestions.length !== 0 && suggestions.map((item, index) => <button  key = {index} className='suggestion'>{item.name}</button>)}
         </div>
     )
 }

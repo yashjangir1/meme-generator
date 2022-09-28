@@ -58,7 +58,6 @@ const Meme = () => {
                     body: param
                 })  
                 const data = await response.json()
-                console.log(data)
                 
                 if(data.success){
                     setGenerated(true)
@@ -127,10 +126,6 @@ const Meme = () => {
         setFocused(prevFocus => !prevFocus);
     }
 
-    const suggestionSelect = (e) => {
-        console.log(e);
-    }
-
     return (
         !generated ? 
             (<div className='meme-container'>
@@ -140,7 +135,7 @@ const Meme = () => {
                             <input onFocus = {changeFocus} onBlur = {changeFocus} type="search" className='search-bar' onChange = {searchInput} placeholder='Search for a meme' />
                             <button className="search-button" onClick = {searchMeme}>Search</button>
                         </div>
-                        {focused && <SearchSuggestions memesArr = {memes} inputText = {searchText} suggestionSelect = {suggestionSelect} />}
+                        {focused && <SearchSuggestions memesArr = {memes} inputText = {searchText} />}
                     </div>
                     {memeFound && <p className='not-found'>No meme found</p>}
                     <h1 className='meme-details'>Fill the below text boxes to create a meme: </h1>
