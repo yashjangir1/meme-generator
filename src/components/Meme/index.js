@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.css'
 import MemeGenerated from '../MemeGenerated'
+import SearchSuggestions from '../SearchSuggestions'
 
 const Meme = () => {
     const [memes, setMemes] = React.useState([])
@@ -10,6 +11,7 @@ const Meme = () => {
     const [generatedUrl, setGeneratedUrl] = React.useState('')
     const [searchText, setSearchText] = React.useState('')
     const [memeFound, setMemeFound] = React.useState(false)
+    const [focused, setFocused] = React.useState(false)
 
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
@@ -121,13 +123,20 @@ const Meme = () => {
         }
     }
 
+    const changeFocus = () => {
+        setFocused(prevFocus => !prevFocus);
+    }
+
     return (
         !generated ? 
             (<div className='meme-container'>
                 <div className='left-container'>
-                    <div className='search-container'>
-                        <input type="search" className='search-bar' onChange = {searchInput} placeholder='Search for a meme' />
-                        <button className="search-button" onClick = {searchMeme}>Search</button>
+                    <div className='search-bar-and-suggestions'>
+                        <div className='search-container'>
+                            <input onFocus = {changeFocus} onBlur = {changeFocus} type="search" className='search-bar' onChange = {searchInput} placeholder='Search for a meme' />
+                            <button className="search-button" onClick = {searchMeme}>Search</button>
+                        </div>
+                        {focused && <SearchSuggestions/>}
                     </div>
                     {memeFound && <p className='not-found'>No meme found</p>}
                     <h1 className='meme-details'>Fill the below text boxes to create a meme: </h1>

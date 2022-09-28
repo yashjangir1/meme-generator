@@ -1,0 +1,25 @@
+.search-suggestions-container{
+    border: 0.5px solid rgb(223, 220, 220);
+    width: 85%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 70px;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.search-bar-and-suggestions{
+    border: 1px solid blue;
+    width: 70%;
+    position: relative;
+}
+
+.suggestion{
+    font-family: Roboto;
+    font-size: 16px;
+    border-bottom: 0.2px solid gray; 
+    margin-bottom: 2px;
+}

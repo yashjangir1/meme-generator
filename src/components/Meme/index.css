@@ -75,7 +75,7 @@ a:hover{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    width: 70%;
+    width: 100%;
     margin-bottom: 30px;
     margin-top: 10px;
 }
@@ -118,6 +118,13 @@ a:hover{
     margin: 0px;
     text-align: center;
 }
+
+
+.search-bar-and-suggestions{
+    width: 70%;
+    position: relative;
+}
+
 
 
 @media all and (max-width: 576px){
