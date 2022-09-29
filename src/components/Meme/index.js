@@ -12,6 +12,9 @@ const Meme = () => {
     const [searchText, setSearchText] = React.useState('')
     const [memeFound, setMemeFound] = React.useState(false)
     const [focused, setFocused] = React.useState(false)
+    const [suggestions, setSuggestions] = React.useState([]);
+    
+    const searchInputEl = React.useRef(null)
 
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
@@ -90,6 +93,17 @@ const Meme = () => {
         setInputFieldArr(arr);
     }, [memeIndex, memes])
 
+
+    React.useEffect(() => {
+        const arr = [];
+        for(let i = 0; i < memes.length; i++){
+            if(memes[i].name.toLowerCase().includes(searchText.toLowerCase())){
+                arr.push(memes[i])
+            }
+        }
+        setSuggestions(arr.filter((item, index) => index < 10))
+    }, [searchText, memes])
+
     const newMeme = () => {
         setGenerated(false)
         skipMeme()
@@ -126,16 +140,28 @@ const Meme = () => {
         setFocused(prevFocus => !prevFocus);
     }
 
+    const stayFocused = (e) => {
+        searchInputEl.current.focus()
+        setSearchText(e.target.textContent)
+        memes.forEach((x, index) => {
+            if(x.name.toLowerCase().includes(searchText.toLowerCase())){
+                console.log(index)
+                setMemeIndex(index)
+            }
+        })
+        console.log(memeIndex)
+    }
+
     return (
         !generated ? 
             (<div className='meme-container'>
                 <div className='left-container'>
                     <div className='search-bar-and-suggestions'>
                         <div className='search-container'>
-                            <input onFocus = {changeFocus} onBlur = {changeFocus} type="search" className='search-bar' onChange = {searchInput} placeholder='Search for a meme' />
+                            <input ref = {searchInputEl} onFocus = {changeFocus} type="search" className='search-bar' onChange = {searchInput} placeholder='Search for a meme' value = {searchText} />
                             <button className="search-button" onClick = {searchMeme}>Search</button>
                         </div>
-                        {focused && <SearchSuggestions memesArr = {memes} inputText = {searchText} />}
+                        {focused && <SearchSuggestions suggestions = {suggestions} stayFocused = {stayFocused} />}
                     </div>
                     {memeFound && <p className='not-found'>No meme found</p>}
                     <h1 className='meme-details'>Fill the below text boxes to create a meme: </h1>
